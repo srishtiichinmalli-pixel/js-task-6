@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Concept Quest Game 🎮</title>
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #38bdf8;
+      --accent-green: #4ade80;
+      --accent-purple: #c084fc;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+      padding: 20px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    header h1 {
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      color: var(--accent-purple);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .question {
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      background-color: var(--accent);
+      color: #000;
+      border: none;
+      padding: 8px 14px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .output-box {
+      background-color: #090d16;
+      border: 1px dashed var(--accent);
+      border-radius: 6px;
+      padding: 10px;
+      margin-top: 10px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.85rem;
+      color: var(--accent-green);
+      min-height: 48px;
+      word-break: break-all;
+    }
+
+    /* Table styling for array representations */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 0.8rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 6px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0f172a;
+      color: var(--accent);
+    }
+
+    .summary-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 2px solid var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>⚔️ RPG Quest Engine — JS Method Lab 🛡️</h1>
+    <p>Demonstrating 14 JavaScript Concepts using Game Scenarios</p>
+  </header>
+
+  <div class="container">
+    
+    <!-- 1. Date Get Methods -->
+    <div class="card">
+      <div>
+        <h3>1) Date - Get Method 🕒</h3>
+        <p class="question">❓ Question: How to retrieve the hero's quest start year, month, and day?</p>
+      </div>
+      <div>
+        <div id="out-1" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo1()">Run Get Date</button>
+      </div>
+    </div>
+
+    <!-- 2. Date Set Methods -->
+    <div class="card">
+      <div>
+        <h3>2) Date - Set Method ⏳</h3>
+        <p class="question">❓ Question: How to fast-forward quest deadline by setting future dates?</p>
+      </div>
+      <div>
+        <div id="out-2" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo2()">Run Set Date</button>
+      </div>
+    </div>
+
+    <!-- 3. String Methods -->
+    <div class="card">
+      <div>
+        <h3>3) String Methods 📜</h3>
+        <p class="question">❓ Question: How to format, trim, and upper-case character dialogue?</p>
+      </div>
+      <div>
+        <div id="out-3" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo3()">Run String Methods</button>
+      </div>
+    </div>
+
+    <!-- 4. Array forEach() -->
+    <div class="card">
+      <div>
+        <h3>4) Array - forEach() 🎒</h3>
+        <p class="question">❓ Question: How to iterate over inventory items and render them?</p>
+      </div>
+      <div>
+        <div id="out-4" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo4()">Run forEach()</button>
+      </div>
+    </div>
+
+    <!-- 5. Array map() -->
+    <div class="card">
+      <div>
+        <h3>5) Array - map() ⚡</h3>
+        <p class="question">❓ Question: How to double player attack stats across the party?</p>
+      </div>
+      <div>
+        <div id="out-5" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo5()">Run map()</button>
+      </div>
+    </div>
+
+    <!-- 6. Array filter() -->
+    <div class="card">
+      <div>
+        <h3>6) Array - filter() 🎯</h3>
+        <p class="question">❓ Question: How to filter party members with HP > 50?</p>
+      </div>
+      <div>
+        <div id="out-6" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo6()">Run filter()</button>
+      </div>
+    </div>
+
+    <!-- 7. Array find() -->
+    <div class="card">
+      <div>
+        <h3>7) Array - find() 🔎</h3>
+        <p class="question">❓ Question: How to find a specific item "Excalibur" in inventory?</p>
+      </div>
+      <div>
+        <div id="out-7" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo7()">Run find()</button>
+      </div>
+    </div>
+
+    <!-- 8. Array reduce() -->
+    <div class="card">
+      <div>
+        <h3>8) Array - reduce() 💰</h3>
+        <p class="question">❓ Question: How to calculate the total gold collected by all players?</p>
+      </div>
+      <div>
+        <div id="out-8" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo8()">Run reduce()</button>
+      </div>
+    </div>
+
+    <!-- 9. Array sort() -->
+    <div class="card">
+      <div>
+        <h3>9) Array - sort() 🏆</h3>
+        <p class="question">❓ Question: How to sort leaderboards by player score descending?</p>
+      </div>
+      <div>
+        <div id="out-9" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo9()">Run sort()</button>
+      </div>
+    </div>
+
+    <!-- 10. Array some() & every() -->
+    <div class="card">
+      <div>
+        <h3>10) Array - some() & every() 🛡️</h3>
+        <p class="question">❓ Question: Are ALL heroes alive? Is AT LEAST ONE hero alive?</p>
+      </div>
+      <div>
+        <div id="out-10" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo10()">Run some() & every()</button>
+      </div>
+    </div>
+
+    <!-- 11. Array includes() & indexOf() -->
+    <div class="card">
+      <div>
+        <h3>11) Array - includes() & indexOf() 🗺️</h3>
+        <p class="question">❓ Question: Check if "Dragon Cave" is visited and find its slot index?</p>
+      </div>
+      <div>
+        <div id="out-11" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo11()">Run includes/indexOf</button>
+      </div>
+    </div>
+
+    <!-- 12. Date - Join Dates -->
+    <div class="card">
+      <div>
+        <h3>12) Date - Join/Format Dates 📅</h3>
+        <p class="question">❓ Question: How to format and join timestamps for game session logs?</p>
+      </div>
+      <div>
+        <div id="out-12" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo12()">Run Join Dates</button>
+      </div>
+    </div>
+
+    <!-- 13. Array push() & pop() -->
+    <div class="card">
+      <div>
+        <h3>13) Array - push() & pop() 🏹</h3>
+        <p class="question">❓ Question: Add item to inventory (push) and drop last item (pop)?</p>
+      </div>
+      <div>
+        <div id="out-13" class="output-box">Click button to run...</div>
+        <button class="btn" onclick="demo13()">Run push() & pop()</button>
+      </div>
+    </div>
+
+    <!-- 14. Final Summary -->
+    <div class="card summary-card">
+      <div>
+        <h3>14) Final Summary 📊</h3>
+        <p class="question">❓ Question: Execute full game state overview incorporating all data processing methods.</p>
+      </div>
+      <div>
+        <div id="out-14" class="output-box" style="min-height: 80px;">Click button to generate full summary report...</div>
+        <button class="btn" onclick="demo14()">Generate Summary</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="scrpit.js"></script>
+</body>
+</html>
